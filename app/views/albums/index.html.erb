@@ -1,0 +1,13 @@
+<%= form_tag(albums_path, method: :get) do %>
+  <%= text_field_tag :term, {}, placeholder: 'Metallica', required: true %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<%= @albums.count %>
+<% @albums.each do |album| %>
+  <%= album[:artworkUrl100] %>
+  <%= album[:collectionName] %>
+  <%= album[:artist_name] %>
+<% end %>
+
+
