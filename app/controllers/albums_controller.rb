@@ -1,11 +1,9 @@
 class AlbumsController < ApplicationController
   def index
-    if albums_params[:term].present?
-      response = HTTParty.get("https://itunes.apple.com/search?term=#{albums_params[:term]}", format: :plain)
-      @albums = JSON.parse(response, symbolize_names: true)[:results]
-    else
-      @albums = []
-    end
+    @albums = []
+    return @albums unless albums_params[:term].present?
+
+    @albums = ItunesService.new(albums_params[:term]).call
   end
 
   private
