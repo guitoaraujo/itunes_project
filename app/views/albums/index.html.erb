@@ -1,13 +1,16 @@
-<%= form_tag(albums_path, method: :get) do %>
-  <%= text_field_tag :term, {}, placeholder: 'Metallica', required: true %>
-  <%= submit_tag 'Search' %>
-<% end %>
+<%= render 'form' %>
 
-<%= @albums.count %>
-<% @albums.each do |album| %>
-  <%= album[:artworkUrl100] %>
-  <%= album[:collectionName] %>
-  <%= album[:artist_name] %>
-<% end %>
-
-
+<div class="row row-cols-1 row-cols-md-5 g-4">
+  <% @albums.each do |album| %>
+    <div class="col mb-3">
+      <div class="card h-100">
+        <img src= <%= album[:artworkUrl100] %> class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= album[:artistName] %></h5>
+          <p class="card-text" style="height: 50px;"><%= album[:collectionName] %></p>
+          <%= render 'favourite', album: album %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="favourite" onchange="handleChange('<%= album[:collectionName] %>')">
+  <label class="form-check-label" for="favourite">Favourite</label>
+</div>
+
+<script>
+  handleChange = album => {
+    console.log(album)
+  }
+</script>
