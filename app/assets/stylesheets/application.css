@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-image: url('https://c4.wallpaperflare.com/wallpaper/691/649/204/ipad-itunes-rainbow-el-wallpaper-preview.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
