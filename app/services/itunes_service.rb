@@ -7,12 +7,26 @@ class ItunesService
 
   def call
     response = HTTParty.get("#{BASE_URL}#{params}")
-    JSON.parse(response, symbolize_names: true)[:results]
+    results = JSON.parse(response, symbolize_names: true)[:results]
+
+    format_results(results)
   end
 
   private
 
   def params
     "entity=musicArtist&entity=album&term=#{@term}"
+  end
+
+  def format_results(results)
+    results.map do |result|
+      {
+        thumbnail: result[:artworkUrl100],
+        title: result[:collectionName],
+        subtitle: result[:artistName],
+        collection_id: result[:collectionId],
+        favourite: false
+      }
+    end
   end
 end

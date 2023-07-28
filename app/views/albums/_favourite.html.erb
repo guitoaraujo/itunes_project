@@ -1,10 +1,47 @@
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="favourite" onchange="handleChange('<%= album[:collectionName] %>')">
-  <label class="form-check-label" for="favourite">Favourite</label>
+  <input 
+    class="form-check-input" 
+    type="checkbox" 
+    role="switch" 
+    id="<%= album[:collection_id] %>"
+    <%= album[:favourite] ? 'checked' : '' %>
+    onchange="handleChange(<%= album.to_json %>)"
+  >
+  <label class="form-check-label" for="<%= album[:collection_id] %>">Favourite</label>
 </div>
 
 <script>
-  handleChange = album => {
-    console.log(album)
+  handleChange = async (album) => {
+    const element = document.getElementById(album.collection_id)
+
+    if (album.id) {
+      const response = await fetch(`/favourite_albums/${album.collection_id}`, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(
+          { 
+            favourite: element.checked
+          }
+        )
+      })
+    } else {
+      const response = await fetch('/favourite_albums', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(
+          {
+            thumbnail: album.thumbnail,
+            title: album.title,
+            subtitle: album.subtitle,
+            collection_id: album.collection_id,
+            favourite: true
+          }
+        )
+      }).then(data => {
+        if (data.status === 422) {
+          element.checked = false
+        }
+      })
+    }
   }
 </script>

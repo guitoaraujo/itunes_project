@@ -1,9 +1,11 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = []
-    return @albums unless albums_params[:term].present?
-
-    @albums = ItunesService.new(albums_params[:term]).call
+    if albums_params[:term].present?
+      results = ItunesService.new(albums_params[:term]).call
+      @albums = FavouriteAlbumsHandler.new(results).call
+    else
+      @albums = FavouriteAlbum.where(favourite: true)
+    end
   end
 
   private

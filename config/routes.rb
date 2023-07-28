@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root 'albums#index'
 
   resources :albums, only: %i[index]
+  resources :favourite_albums, only: %i[create destroy]
 end

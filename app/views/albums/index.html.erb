@@ -4,10 +4,10 @@
   <% @albums.each do |album| %>
     <div class="col mb-3">
       <div class="card h-100">
-        <img src= <%= album[:artworkUrl100] %> class="card-img-top" alt="...">
+        <img src= <%= album[:thumbnail] %> class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title"><%= album[:collectionName] %></h5>
-          <p class="card-text" style="height: 50px;"><%= album[:artistName] %></p>          
+          <h5 class="card-title"><%= album[:title] %></h5>
+          <p class="card-text" style="height: 50px;"><%= album[:subtitle] %></p>          
         </div>
         <div class="card-footer text-body-secondary">
           <%= render 'favourite', album: album %>
