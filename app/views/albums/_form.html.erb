@@ -1,5 +1,8 @@
 <%= form_tag(albums_path, method: :get, class: 'row mt-5 mb-5') do %>
-  <div class="offset-3 col-6">
-    <%= text_field_tag :term, {}, placeholder: 'Search artists or albums', class: 'form-control form-control-lg', required: true %>
+  <div class="offset-3 col-4">
+    <%= text_field_tag :term, {}, placeholder: 'Type artists or albums names', class: 'form-control form-control-lg', required: true %>
+  </div>
+  <div class="col-3">
+    <%= submit_tag 'Search', class: 'btn btn-lg btn-outline-info' %>
   </div>
 <% end %>
