@@ -12,17 +12,15 @@ class FavouriteAlbumsController < ApplicationController
   end
 
   def destroy
-    if @favourite_album.delete
-      render json: { favourite_album: @favourite_album }, status: :ok
-    else
-      render json: { favourite_album: @favourite_album.errors }, status: :unprocessable_entity
-    end
+    @favourite_album.delete
+    head :ok
   end
 
   private
 
   def set_favourite_album
     @favourite_album = FavouriteAlbum.find_by(collection_id: params[:id])
+    head :not_found if @favourite_album.nil?
   end
 
   def favourite_album_params
