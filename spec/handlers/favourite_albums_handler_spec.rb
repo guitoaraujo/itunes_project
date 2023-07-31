@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe FavouriteAlbumsHandler do
   subject { described_class.new(results).call }
 
-  context "#call" do
-    context "when there are not favourite albums" do
+  context '#call' do
+    context 'when there are not favourite albums' do
       let!(:results) do
         [
           {
@@ -21,7 +23,7 @@ describe FavouriteAlbumsHandler do
         expect(subject).to eq(results)
       end
     end
-    context "when there are favourite albums" do
+    context 'when there are favourite albums' do
       let!(:favourite_album) { create(:favourite_album) }
       let!(:results) do
         [

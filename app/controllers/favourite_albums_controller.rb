@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FavouriteAlbumsController < ApplicationController
   skip_forgery_protection
   before_action :set_favourite_album, only: %i[destroy]

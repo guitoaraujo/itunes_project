@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FavouriteAlbumsHandler
   def initialize(results)
     @results = results

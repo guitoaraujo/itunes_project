@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ItunesService
-  BASE_URL = 'https://itunes.apple.com/search?'.freeze
+  BASE_URL = 'https://itunes.apple.com/search?'
 
   def initialize(term)
     @term = term

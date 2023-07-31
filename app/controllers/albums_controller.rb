@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AlbumsController < ApplicationController
   def index
     if albums_params[:term].present?

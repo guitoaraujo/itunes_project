@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe AlbumsController, type: :controller do
@@ -19,8 +21,8 @@ describe AlbumsController, type: :controller do
     itunes_service_result
   end
 
-  context "GET albums#index" do
-    context "when term is present" do
+  context 'GET albums#index' do
+    context 'when term is present' do
       before do
         allow_any_instance_of(ItunesService).to receive(:call).and_return(itunes_service_result)
         allow_any_instance_of(FavouriteAlbumsHandler).to receive(:call).and_return(favourite_albums_handler_result)
@@ -32,7 +34,7 @@ describe AlbumsController, type: :controller do
         expect(albums).to eq(favourite_albums_handler_result)
       end
     end
-    context "when term is not present" do
+    context 'when term is not present' do
       it 'returns just favourite albums with favourite true' do
         get :index
 

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe FavouriteAlbumsController, type: :controller do
   let(:favourite_album) { create(:favourite_album) }
 
-  context "POST favourite_albums#create" do
+  context 'POST favourite_albums#create' do
     let(:params) do
       {
         favourite_album: {
@@ -28,7 +30,7 @@ describe FavouriteAlbumsController, type: :controller do
     end
   end
 
-  context "DELETE favourite_albums#destroy" do
+  context 'DELETE favourite_albums#destroy' do
     it 'returns status 200' do
       delete :destroy, params: { id: favourite_album.collection_id }
 
