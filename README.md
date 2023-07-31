@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+* install `Ruby 3.0.1`
+* install `Rails 7.0.6`
+* install `MySQL`
 
-* Ruby version
+## Project
 
-* System dependencies
+* run `bundle install`
+* run `rails server`
+* visit `http://localhost:3000/`
 
-* Configuration
+## Specs
 
-* Database creation
+* run `bundle exec rspec`
 
-* Database initialization
+## Next Improvements
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* use `ReactJS`
+* use `devise gem` 
