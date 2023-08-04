@@ -13,7 +13,9 @@ class FavouriteAlbumsHandler
     @favourite_albums.each do |album|
       next unless ids.include? album.collection_id
 
-      @results.find { |result| result[:collection_id] == album.collection_id }[:favourite] = true
+      item = @results.find { |result| result[:collection_id] == album.collection_id }
+      item[:favourite] = true
+      item[:id] = album.id
     end
     @results
   end

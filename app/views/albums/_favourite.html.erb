@@ -13,7 +13,7 @@
 <script>
   handleChange = async (album) => {
     const element = document.getElementById(album.collection_id)
-
+    console.log(album)
     if (album.id) {
       const response = await fetch(`/favourite_albums/${album.collection_id}`, {
         method: 'DELETE',
@@ -23,7 +23,7 @@
             favourite: element.checked
           }
         )
-      })
+      }).then(()=>location.reload())
     } else {
       const response = await fetch('/favourite_albums', {
         method: 'POST',
@@ -39,8 +39,9 @@
         )
       }).then(data => {
         if (data.status === 422) {
-          element.checked = false
+          element.checked = false          
         }
+        location.reload()
       })
     }
   }
